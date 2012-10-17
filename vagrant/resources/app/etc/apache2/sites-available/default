@@ -3,13 +3,13 @@
 
     SetEnv ENVIRONMENT development
 
-    DocumentRoot /vagrant/public_html
+    DocumentRoot /vagrant/web
     <Directory />
             Options FollowSymLinks
             AllowOverride None
     </Directory>
 
-    <Directory /vagrant/public_html>
+    <Directory /vagrant/web>
             Options Indexes FollowSymLinks MultiViews
             AllowOverride None
             Order allow,deny
