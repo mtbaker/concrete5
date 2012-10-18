@@ -6,7 +6,6 @@ class package_base
     "puppet": ensure => "present";
   }
 
-
   exec
   {
     'init':

@@ -33,7 +33,6 @@ class config_sql
       require => Exec["mysql.restart"]
   }
 
-/*
   exec {
     'mysql.create-db':
       unless => "mysql -u${params::dbuser} -p${params::dbpass} ${params::dbname}",
@@ -56,7 +55,6 @@ class config_sql
       command => "mysql -uroot -proot -e \"grant all privileges on ${params::dbname}.* to ${params::dbuser}@localhost identified by '${params::dbpass}';\"",
       require => Exec["mysql.populate-db"]
   }
-*/
 
   exec {
     'mysql.permissions-root':

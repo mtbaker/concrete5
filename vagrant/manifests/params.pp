@@ -11,6 +11,6 @@ class params
     $dbname = 'concrete5'
     $dbuser = 'c5admin'
     $dbpass = 'XfDN7QhajRW1Vj'
-    $dbfile = ''
+    $dbfile = '/vagrant/data/init.sql'
 
 }

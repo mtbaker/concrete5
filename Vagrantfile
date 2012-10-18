@@ -13,7 +13,7 @@ Vagrant::Config.run do |config|
   # adjust the VM configuration for easier operation and so that the name
   # makes sense in the Virtual Box GUI
   config.vm.customize do |vm|
-    vm.name = "Inventory Migration Development Instance"
+    vm.name = "Concrete5 Development Instance"
   end
 
 end

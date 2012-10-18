@@ -4,8 +4,6 @@ thumbs.db
 __MACOSX
 ._*
 
-# ignore the site.php
-/web/config/site.php
 
 #ignore everything but the index.html
 /web/files/*
@@ -36,6 +34,7 @@ error_log
 .htaccess
 .ftpquota
 /.idea/
+log
 
 # ignore Aptana and Eclipse project files
 .project
