@@ -10,6 +10,7 @@ For Development:
 
 1. `vagrant up`
 2. Open [33.33.33.100](http://33.33.33.100)
+3. admin/admin
 
 
 For Production:
@@ -23,6 +24,8 @@ For Production:
 # Documentation
 
 [RTM][docs]
+
+[XML DB Config](http://www.concrete5.org/documentation/how-tos/developers/creating-and-working-with-db-xml-files/)
 
 
 
