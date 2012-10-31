@@ -1,43 +1,47 @@
-<?php       defined('C5_EXECUTE') or die(_("Access Denied.")); 
-$bObj=$controller;
-?> 
-<style>
-	table#videoBlockSetup th {font-weight: bold; text-style: normal; padding-right: 8px; white-space: nowrap; vertical-align:top ; padding-bottom:8px}
-	table#videoBlockSetup td{ font-size:12px; vertical-align:top; padding-bottom:8px;}
-	table#videoBlockSetup .note{ font-size:10px; color:#999999; font-weight:normal }
-</style>
-<table id="videoBlockSetup" style="width:100%"> 
-	<tr>
-		<th><?php      echo t('Title')?></th>
-		<td><input type="text" style="width: 230px" name="title" value="<?php      echo $bObj->title?>"/></td>
-	</tr>
-	<tr>
-		<th><?php      echo t('URL')?></th>
-		<td>
-			<input type="text" style="width: 230px" id="videoURL" name="videoURL" value="<?php      echo $bObj->videoURL?>" />
-		</td>
-	</tr>
-	<tr>
-		<th><?php      echo t('Preview Text')?></th>
-		<td>
-			<textarea id="previewText" name="previewText" style="width: 230px; height: 150px;"><?php      echo $bObj->previewText?></textarea>
-		</td>
-	</tr>
-	<tr>
-		<th><?php      echo t('Width')?></th>
-		<td>
-			<input type="text" style="width: 230px" id="videoWidth" name="videoWidth" value="<?php      echo $bObj->videoWidth?>" />
-		</td>
-	</tr>
-	<tr>
-		<th><?php      echo t('Height')?></th>
-		<td>
-			<input type="text" style="width: 230px" id="videoHeight" name="videoHeight" value="<?php      echo $bObj->videoHeight?>" />
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<?php     echo t('Standard player size on vimeo.com is 960x540, standard embed code is 500x281.');?>
-		</td>
-	</tr>
-</table>
+<?php
+
+defined('C5_EXECUTE') or die(_("Access Denied.")); 
+$bObj = $controller;
+
+?>
+
+<div class="ccm-ui">
+    <div class="form-horizontal">
+
+        <div class="control-group">
+            <label class="control-label" for="inputTitle">Title</label>
+            <div class="controls">
+                <input type="text" id="inputTitle" placeholder="Snow Report" value="<?php echo $bObj->title; ?>">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputHost">Host</label>
+            <div class="controls">
+                <input type="text" id="inputHost" placeholder="IP address" value="<?php echo $bObj->host; ?>">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputTable">Table</label>
+            <div class="controls">
+                <input type="text" id="inputTable" placeholder="Database table name" value="<?php echo $bObj->table; ?>">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputUsername">Username</label>
+            <div class="controls">
+                <input type="text" id="inputUsername" placeholder="" value="<?php echo $bObj->username; ?>">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputPassword">Password</label>
+            <div class="controls">
+                <input type="text" id="inputPassword" placeholder="" value="<?php echo $bObj->password; ?>">
+            </div>
+        </div>
+
+    </div>
+</div>

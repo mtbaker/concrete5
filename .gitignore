@@ -12,10 +12,6 @@ __MACOSX
 # ignore updates folder
 /web/updates/*
 
-# ignore packages folder
-/web/packages/*
-/web/concrete/packages/*
-
 # more stuff
 /web/css/*
 /web/js/*

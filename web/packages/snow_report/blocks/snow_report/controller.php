@@ -6,8 +6,8 @@ class SnowReportBlockController extends BlockController {
   var $pobj;
 
   protected $btTable = 'btSnowReport';
-  protected $btInterfaceWidth = "400";
-  protected $btInterfaceHeight = "370";
+  protected $btInterfaceWidth = "600";
+  protected $btInterfaceHeight = "400";
   protected $btCacheBlockOutput = false;
   protected $btCacheBlockOutputOnPost = true;
   protected $btCacheBlockOutputForRegisteredUsers = false;
@@ -22,13 +22,12 @@ class SnowReportBlockController extends BlockController {
   public function getBlockTypeName() {
     return t("Snow Report");
   }
-  
+
   public function fetchReport() {
     $report = (object) array(
       'depth' => 8,
       'temp'  => 28
     );
-    
     return $report;
   }
 

@@ -6,5 +6,9 @@
 			<unsigned />
 		</field>
 		<field name="title" type="C" size="255"></field>
+		<field name="host" type="C" size="255"></field>
+		<field name="table" type="C" size="255"></field>
+		<field name="username" type="C" size="255"></field>
+		<field name="password" type="C" size="255"></field>
 	</table>
 </schema>
