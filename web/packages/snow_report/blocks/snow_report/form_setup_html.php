@@ -11,35 +11,35 @@ $bObj = $controller;
         <div class="control-group">
             <label class="control-label" for="inputTitle">Title</label>
             <div class="controls">
-                <input type="text" id="inputTitle" placeholder="Snow Report" value="<?php echo $bObj->title; ?>">
+                <input type="text" id="inputTitle" placeholder="Snow Report" name="title" value="<?php echo $bObj->title; ?>">
             </div>
         </div>
 
         <div class="control-group">
             <label class="control-label" for="inputHost">Host</label>
             <div class="controls">
-                <input type="text" id="inputHost" placeholder="IP address" value="<?php echo $bObj->host; ?>">
+                <input type="text" id="inputHost" placeholder="IP address" name="host" value="<?php echo $bObj->host; ?>">
             </div>
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputTable">Table</label>
+            <label class="control-label" for="inputTablename">Table</label>
             <div class="controls">
-                <input type="text" id="inputTable" placeholder="Database table name" value="<?php echo $bObj->table; ?>">
+                <input type="text" id="inputTablename" placeholder="Database table name" name="tablename" value="<?php echo $bObj->tablename; ?>">
             </div>
         </div>
 
         <div class="control-group">
             <label class="control-label" for="inputUsername">Username</label>
             <div class="controls">
-                <input type="text" id="inputUsername" placeholder="" value="<?php echo $bObj->username; ?>">
+                <input type="text" id="inputUsername" placeholder="" name="username" value="<?php echo $bObj->username; ?>">
             </div>
         </div>
 
         <div class="control-group">
             <label class="control-label" for="inputPassword">Password</label>
             <div class="controls">
-                <input type="text" id="inputPassword" placeholder="" value="<?php echo $bObj->password; ?>">
+                <input type="text" id="inputPassword" placeholder="" name="password" value="<?php echo $bObj->password; ?>">
             </div>
         </div>
 

@@ -14,9 +14,9 @@ $playerID = uniqid();
     <div class="ccm-edit-mode-disabled-item">
         <?php echo t('Content disabled in edit mode.'); ?>
     </div>
-<?php } else{ ?>
+<?php } else { ?>
     <div class="snowReport">
-        <?php echo $depth; ?>
+        <?= $depth ?>
     </div>
 <?php } ?>
 </div>
