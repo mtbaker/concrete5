@@ -7,7 +7,7 @@
 		</field>
 		<field name="title" type="C" size="255"></field>
 		<field name="host" type="C" size="255"></field>
-		<field name="tablename" type="C" size="255"></field>
+		<field name="database" type="C" size="255"></field>
 		<field name="username" type="C" size="255"></field>
 		<field name="password" type="C" size="255"></field>
 	</table>

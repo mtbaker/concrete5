@@ -23,9 +23,9 @@ $bObj = $controller;
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputTablename">Table</label>
+            <label class="control-label" for="inputDatabase">Database</label>
             <div class="controls">
-                <input type="text" id="inputTablename" placeholder="Database table name" name="tablename" value="<?php echo $bObj->tablename; ?>">
+                <input type="text" id="inputDatabase" placeholder="Database name" name="database" value="<?php echo $bObj->database; ?>">
             </div>
         </div>
 

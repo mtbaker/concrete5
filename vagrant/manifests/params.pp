@@ -12,5 +12,11 @@ class params
     $dbuser = 'c5admin'
     $dbpass = 'XfDN7QhajRW1Vj'
     $dbfile = '/vagrant/data/init.sql'
+    
+    # Report database
+    $dbname_report = 'mountainReport'
+    $dbuser_report = 'reportadmin'
+    $dbpass_report = 'XfDN7QhajRW1Vj'
+    $dbfile_report = '/vagrant/data/mountainReport.sql'
 
 }

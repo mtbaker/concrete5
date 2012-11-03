@@ -1,4 +1,4 @@
-<?php      
+<?php
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
 class SnowReportBlockController extends BlockController {
@@ -24,6 +24,12 @@ class SnowReportBlockController extends BlockController {
   }
 
   public function fetchReport() {
+    
+    // Concrete5 uses an [ADOdb library](http://adodb.sourceforge.net/)
+    $db = Loader::db($this->host, $this->username, $this->password, $this->database, true);
+
+    $db->Execute('select * from TestTable2');
+  
     $report = (object) array(
       'depth' => 8,
       'temp'  => 28
@@ -44,7 +50,12 @@ class SnowReportBlockController extends BlockController {
   }
 
   public function save($data) {
-    $args['title'] = isset($data['title']) ? trim($data['title']) : '';
+
+    $formVars = array('title', 'host', 'tablename', 'username', 'password');
+    $args = array();
+    foreach ($formVars as $var) {
+      $args[$var] = isset($data[$var]) ? trim($data[$var]) : '';
+    }
 
     parent::save($args);
   }
