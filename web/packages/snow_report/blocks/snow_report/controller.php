@@ -57,13 +57,13 @@ class SnowReportBlockController extends BlockController {
       from tbl_Reports
       where
         status = 1 and
-        web = 1
+        web = 1 and web =0
       order by ReportID DESC
       limit 1
     ");
 
     if ($results === false) {
-      // TODO: Error handling
+      throw new SnowReportException();
     }
 
     // This loads all the results from the query into the object
@@ -92,8 +92,15 @@ class SnowReportBlockController extends BlockController {
   }
 
   public function view() {
-    $report = $this->fetchReport();
+    try {
+      $report = $this->fetchReport();
+    } catch (SnowReportException $e) {
+      $e->sendThrottledEmail();
+      // TODO: change to error template
+      return;
+    }
 
+    // From the C5 database
     $this->set('bID', $this->bID);
     $this->set('title', $this->title);
 
@@ -101,6 +108,8 @@ class SnowReportBlockController extends BlockController {
     foreach ($report as $key => $value) {
       $this->set($key, $value);
     }
+
+    return;
   }
 
   public function save($data) {
@@ -113,6 +122,29 @@ class SnowReportBlockController extends BlockController {
     }
 
     parent::save($args);
+  }
+}
+
+class SnowReportException extends exception {
+
+  public function __construct($message = null, $code = 0, Exception $previous = null) {
+    // TODO: write to error log
+    // http://www.concrete5.org/documentation/developers/system/logging
+    
+    parent::__construct($message, $code, $previous);
+  }
+  
+  public function sendThrottledEmail() {
+      // TODO
+      // check for a error.txt file less than an hour old
+      // if not found, send mail to contacts (see if there is a c5 setting)
+      
+      // touch the file
+  }
+
+  public function sendEmail() {
+    // TODO
+    // http://www.concrete5.org/documentation/developers/helpers/mail
   }
 }
 
