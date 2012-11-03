@@ -57,7 +57,7 @@ class SnowReportBlockController extends BlockController {
       from tbl_Reports
       where
         status = 1 and
-        type = 1
+        web = 1
       order by ReportID DESC
       limit 1
     ");
@@ -80,9 +80,10 @@ class SnowReportBlockController extends BlockController {
     $report->BaseHeather_metric = SnowReportBlockConverter::toCentimeters($report->BaseHeather);
     $report->BasePan_metric     = SnowReportBlockConverter::toCentimeters($report->BasePan);
 
-    // Friendly time format
+    // Friendly time format, included the "ago"
     $date_helper = new Concrete5_Helper_Date();
     $report->SubmitTimeAgo = $date_helper->timeSince($report->SubmitTime);
+    $report->ReportDay     = $date_helper->date("F j", $report->SubmitTime);
 
     $results->Close();
     $db->Close();

@@ -25,7 +25,8 @@ if ($c->isEditMode()) {
     <h2><?= $title ?></h2>
 
     <div class="snowReport">
-        <?= nl2br($Summary) ?>
+        <p><?= $Weather ?></p>
+        <p><?= nl2br($Summary) ?></p>
     </div>
 
 </div>
