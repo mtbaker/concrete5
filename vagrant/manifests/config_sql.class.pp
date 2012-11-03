@@ -82,7 +82,7 @@ class config_sql
   exec {
     'mysql.permissions-root':
       path    => '/bin:/usr/bin',
-      command => "mysql -uroot -proot -e \"grant all privileges on ${params::dbname}.* to root@'%' identified by 'root';\"",
+      command => "mysql -uroot -proot -e \"grant all privileges on *.* to root@'%' identified by 'root';\"",
       require => Exec["mysql.permissions-report-db"]
   }
 
