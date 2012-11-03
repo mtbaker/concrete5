@@ -481,7 +481,7 @@ CREATE TABLE `BlockTypes` (
   `pkgID` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`btID`),
   UNIQUE KEY `btHandle` (`btHandle`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -490,7 +490,7 @@ CREATE TABLE `BlockTypes` (
 
 LOCK TABLES `BlockTypes` WRITE;
 /*!40000 ALTER TABLE `BlockTypes` DISABLE KEYS */;
-INSERT INTO `BlockTypes` VALUES (1,'core_scrapbook_display','Scrapbook Display (Core)','Proxy block for blocks pasted through the scrapbook.',1,0,0,1,0,400,400,0),(2,'core_stack_display','Stack Display (Core)','Proxy block for stacks added through the UI.',1,0,0,1,0,400,400,0),(3,'dashboard_featured_addon','Dashboard Featured Add-On','Features an add-on from concrete5.org.',1,0,0,1,0,300,100,0),(4,'dashboard_featured_theme','Dashboard Featured Theme','Features a theme from concrete5.org.',1,0,0,1,0,300,100,0),(5,'dashboard_newsflow_latest','Dashboard Newsflow Latest','Grabs the latest newsflow data from concrete5.org.',1,0,0,1,0,400,400,0),(6,'dashboard_app_status','Dashboard App Status','Displays update and welcome back information on your dashboard.',1,0,0,1,0,400,400,0),(7,'dashboard_site_activity','Dashboard Site Activity','Displays a summary of website activity.',1,0,0,1,0,400,400,0),(8,'autonav','Auto-Nav','Creates navigation trees and sitemaps.',1,0,0,0,1,500,350,0),(9,'content','Content','HTML/WYSIWYG Editor Content.',1,0,0,0,2,600,465,0),(10,'date_nav','Date Navigation','A collapsible date based navigation tree',1,0,0,0,3,500,350,0),(11,'external_form','External Form','Include external forms in the filesystem and place them on pages.',1,0,0,0,4,370,100,0),(12,'file','File','Link to files stored in the asset library.',1,0,0,0,5,300,250,0),(13,'flash_content','Flash Content','Embeds SWF files, including flash detection.',1,0,0,0,6,380,200,0),(14,'form','Form','Build simple forms and surveys.',1,0,0,0,7,420,430,0),(15,'google_map','Google Map','Enter an address and a Google Map of that location will be placed in your page.',1,0,0,0,8,400,200,0),(16,'guestbook','Guestbook / Comments','Adds blog-style comments (a guestbook) to your page.',1,0,1,0,9,350,480,0),(17,'html','HTML','For adding HTML by hand.',1,0,0,0,10,600,465,0),(18,'image','Image','Adds images and onstates from the library to pages.',1,0,0,0,11,400,550,0),(19,'next_previous','Next & Previous Nav','Navigate through sibling pages.',1,0,0,0,12,430,400,0),(20,'page_list','Page List','List pages based on type, area.',1,0,0,0,13,500,350,0),(21,'rss_displayer','RSS Displayer','Fetch, parse and display the contents of an RSS or Atom feed.',1,0,0,0,14,400,330,0),(22,'search','Search','Add a search box to your site.',1,0,0,0,15,400,240,0),(23,'slideshow','Slideshow','Display a running loop of images.',1,0,0,0,16,550,400,0),(24,'survey','Survey','Provide a simple survey, along with results in a pie chart format.',1,0,0,0,17,420,300,0),(25,'tags','Tags','List pages based on type, area.',1,0,0,0,18,450,260,0),(26,'video','Video Player','Embeds uploaded video into a web page. Supports AVI, WMV, Quicktime/MPEG4 and FLV formats.',1,0,0,0,19,320,220,0),(27,'youtube','YouTube Video','Embeds a YouTube Video in your web page.',1,0,0,0,20,400,210,0),(28,'date_archive','Blog Date Archive','Displays month archive for pages',1,0,0,0,21,500,350,0);
+INSERT INTO `BlockTypes` VALUES (1,'core_scrapbook_display','Scrapbook Display (Core)','Proxy block for blocks pasted through the scrapbook.',1,0,0,1,0,400,400,0),(2,'core_stack_display','Stack Display (Core)','Proxy block for stacks added through the UI.',1,0,0,1,0,400,400,0),(3,'dashboard_featured_addon','Dashboard Featured Add-On','Features an add-on from concrete5.org.',1,0,0,1,0,300,100,0),(4,'dashboard_featured_theme','Dashboard Featured Theme','Features a theme from concrete5.org.',1,0,0,1,0,300,100,0),(5,'dashboard_newsflow_latest','Dashboard Newsflow Latest','Grabs the latest newsflow data from concrete5.org.',1,0,0,1,0,400,400,0),(6,'dashboard_app_status','Dashboard App Status','Displays update and welcome back information on your dashboard.',1,0,0,1,0,400,400,0),(7,'dashboard_site_activity','Dashboard Site Activity','Displays a summary of website activity.',1,0,0,1,0,400,400,0),(8,'autonav','Auto-Nav','Creates navigation trees and sitemaps.',1,0,0,0,1,500,350,0),(9,'content','Content','HTML/WYSIWYG Editor Content.',1,0,0,0,2,600,465,0),(10,'date_nav','Date Navigation','A collapsible date based navigation tree',1,0,0,0,3,500,350,0),(11,'external_form','External Form','Include external forms in the filesystem and place them on pages.',1,0,0,0,4,370,100,0),(12,'file','File','Link to files stored in the asset library.',1,0,0,0,5,300,250,0),(13,'flash_content','Flash Content','Embeds SWF files, including flash detection.',1,0,0,0,6,380,200,0),(14,'form','Form','Build simple forms and surveys.',1,0,0,0,7,420,430,0),(15,'google_map','Google Map','Enter an address and a Google Map of that location will be placed in your page.',1,0,0,0,8,400,200,0),(16,'guestbook','Guestbook / Comments','Adds blog-style comments (a guestbook) to your page.',1,0,1,0,9,350,480,0),(17,'html','HTML','For adding HTML by hand.',1,0,0,0,10,600,465,0),(18,'image','Image','Adds images and onstates from the library to pages.',1,0,0,0,11,400,550,0),(19,'next_previous','Next & Previous Nav','Navigate through sibling pages.',1,0,0,0,12,430,400,0),(20,'page_list','Page List','List pages based on type, area.',1,0,0,0,13,500,350,0),(21,'rss_displayer','RSS Displayer','Fetch, parse and display the contents of an RSS or Atom feed.',1,0,0,0,14,400,330,0),(22,'search','Search','Add a search box to your site.',1,0,0,0,15,400,240,0),(23,'slideshow','Slideshow','Display a running loop of images.',1,0,0,0,16,550,400,0),(24,'survey','Survey','Provide a simple survey, along with results in a pie chart format.',1,0,0,0,17,420,300,0),(25,'tags','Tags','List pages based on type, area.',1,0,0,0,18,450,260,0),(26,'video','Video Player','Embeds uploaded video into a web page. Supports AVI, WMV, Quicktime/MPEG4 and FLV formats.',1,0,0,0,19,320,220,0),(27,'youtube','YouTube Video','Embeds a YouTube Video in your web page.',1,0,0,0,20,400,210,0),(28,'date_archive','Blog Date Archive','Displays month archive for pages',1,0,0,0,21,500,350,0),(29,'snow_report','Snow Report','Embeds a snow report in your web page.',1,0,0,0,22,600,400,1);
 /*!40000 ALTER TABLE `BlockTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -892,7 +892,7 @@ CREATE TABLE `Config` (
 
 LOCK TABLES `Config` WRITE;
 /*!40000 ALTER TABLE `Config` DISABLE KEYS */;
-INSERT INTO `Config` VALUES ('ACCESS_ENTITY_UPDATED','2012-10-18 16:00:26','1350568826',0,0),('ANTISPAM_LOG_SPAM','2012-10-18 16:00:25','1',0,0),('APP_VERSION_LATEST','2012-10-18 16:00:32','5.6.0.2',0,0),('ENABLE_CACHE','2012-10-18 16:00:25','1',0,0),('ENABLE_LOG_EMAILS','2012-10-18 16:00:25','1',0,0),('ENABLE_LOG_ERRORS','2012-10-18 16:00:25','1',0,0),('ENABLE_MARKETPLACE_SUPPORT','2012-10-18 16:00:25','1',0,0),('ENABLE_OVERRIDE_CACHE','2012-10-18 16:00:25','1',0,0),('ENVIRONMENT_CACHE','2012-10-18 16:00:42','O:11:\"Environment\":7:{s:16:\"\0*\0coreOverrides\";a:0:{}s:15:\"\0*\0corePackages\";a:0:{}s:25:\"\0*\0coreOverridesByPackage\";a:0:{}s:19:\"\0*\0overridesScanned\";b:1;s:18:\"\0*\0cachedOverrides\";a:0:{}s:13:\"\0*\0autoLoaded\";b:0;s:14:\"\0*\0ignoreFiles\";a:1:{i:0;s:8:\"__MACOSX\";}}',0,0),('FULL_PAGE_CACHE_GLOBAL','2012-10-18 16:00:25','0',0,0),('NEWSFLOW_LAST_VIEWED','2012-10-18 14:00:48','1350568848',1,0),('SEEN_INTRODUCTION','2012-10-18 16:00:43','1',0,0),('SITE','2012-10-18 16:00:31','Baker Development',0,0),('SITE_APP_VERSION','2012-10-18 16:00:31','5.6.0.3a1',0,0),('SITE_DEBUG_LEVEL','2012-10-18 16:00:25','1',0,0),('SITE_INSTALLED_APP_VERSION','2012-10-18 16:00:31','5.6.0.3a1',0,0);
+INSERT INTO `Config` VALUES ('ACCESS_ENTITY_UPDATED','2012-10-18 16:00:26','1350568826',0,0),('ANTISPAM_LOG_SPAM','2012-10-18 16:00:25','1',0,0),('APP_VERSION_LATEST','2012-11-03 17:45:11','5.6.0.2',0,0),('ENABLE_CACHE','2012-10-18 16:00:25','1',0,0),('ENABLE_LOG_EMAILS','2012-10-18 16:00:25','1',0,0),('ENABLE_LOG_ERRORS','2012-10-18 16:00:25','1',0,0),('ENABLE_MARKETPLACE_SUPPORT','2012-10-18 16:00:25','1',0,0),('ENABLE_OVERRIDE_CACHE','2012-10-18 16:00:25','1',0,0),('ENVIRONMENT_CACHE','2012-11-03 17:46:25','O:11:\"Environment\":7:{s:16:\"\0*\0coreOverrides\";a:0:{}s:15:\"\0*\0corePackages\";a:0:{}s:25:\"\0*\0coreOverridesByPackage\";a:0:{}s:19:\"\0*\0overridesScanned\";b:1;s:18:\"\0*\0cachedOverrides\";a:0:{}s:13:\"\0*\0autoLoaded\";b:0;s:14:\"\0*\0ignoreFiles\";a:1:{i:0;s:8:\"__MACOSX\";}}',0,0),('FULL_PAGE_CACHE_GLOBAL','2012-10-18 16:00:25','0',0,0),('NEWSFLOW_LAST_VIEWED','2012-11-03 16:45:11','1351961111',1,0),('SEEN_INTRODUCTION','2012-10-18 16:00:43','1',0,0),('SITE','2012-10-18 16:00:31','Baker Development',0,0),('SITE_APP_VERSION','2012-10-18 16:00:31','5.6.0.3a1',0,0),('SITE_DEBUG_LEVEL','2012-10-18 16:00:25','1',0,0),('SITE_INSTALLED_APP_VERSION','2012-10-18 16:00:31','5.6.0.3a1',0,0);
 /*!40000 ALTER TABLE `Config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1609,7 +1609,7 @@ CREATE TABLE `Logs` (
   PRIMARY KEY (`logID`),
   KEY `logType` (`logType`),
   KEY `logIsInternal` (`logIsInternal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1618,6 +1618,7 @@ CREATE TABLE `Logs` (
 
 LOCK TABLES `Logs` WRITE;
 /*!40000 ALTER TABLE `Logs` DISABLE KEYS */;
+INSERT INTO `Logs` VALUES (1,'sent_emails','2012-11-03 16:37:05','**EMAILS ARE ENABLED. THIS EMAIL WAS SENT TO mail()**\nTemplate Used: forgot_password\nTo: craig@mtbaker.us\nFrom: &quot;Forgot Password&quot; &lt;craig@mtbaker.us&gt;\nSubject: Forgot Password\nBody: \n\nDear admin,\n\nYou have requested a new password for the site Baker Development \n\nYour username is: admin\n\nYou may change your password at the following address:\n\nhttp://33.33.33.100/index.php/login/change_password/qii1HW53oxzE/\n\nThanks for browsing the site!\n\n\n',NULL,1),(2,'sent_emails','2012-11-03 16:38:18','**EMAILS ARE ENABLED. THIS EMAIL WAS SENT TO mail()**\nTemplate Used: forgot_password\nTo: craig@mtbaker.us\nFrom: &quot;Forgot Password&quot; &lt;craig@mtbaker.us&gt;\nSubject: Forgot Password\nBody: \n\nDear admin,\n\nYou have requested a new password for the site Baker Development \n\nYour username is: admin\n\nYou may change your password at the following address:\n\nhttp://33.33.33.100/index.php/login/change_password/HmplNxtTwfH7/\n\nThanks for browsing the site!\n\n\n',NULL,1);
 /*!40000 ALTER TABLE `Logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1700,7 +1701,7 @@ CREATE TABLE `Packages` (
   `pkgAvailableVersion` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`pkgID`),
   UNIQUE KEY `pkgHandle` (`pkgHandle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1709,6 +1710,7 @@ CREATE TABLE `Packages` (
 
 LOCK TABLES `Packages` WRITE;
 /*!40000 ALTER TABLE `Packages` DISABLE KEYS */;
+INSERT INTO `Packages` VALUES (1,'Snow Report','snow_report','Embeds a snow report in your web page.','2012-11-03 17:46:24',1,'1.0.0',NULL);
 /*!40000 ALTER TABLE `Packages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1970,7 +1972,7 @@ CREATE TABLE `PageStatistics` (
   KEY `cID` (`cID`),
   KEY `date` (`date`),
   KEY `uID` (`uID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1979,7 +1981,7 @@ CREATE TABLE `PageStatistics` (
 
 LOCK TABLES `PageStatistics` WRITE;
 /*!40000 ALTER TABLE `PageStatistics` DISABLE KEYS */;
-INSERT INTO `PageStatistics` VALUES (1,1,'2012-10-18','2012-10-18 14:00:42',1),(2,105,'2012-10-18','2012-10-18 14:00:47',1);
+INSERT INTO `PageStatistics` VALUES (1,1,'2012-10-18','2012-10-18 14:00:42',1),(2,105,'2012-10-18','2012-10-18 14:00:47',1),(3,1,'2012-11-03','2012-11-03 16:35:24',0),(4,109,'2012-11-03','2012-11-03 16:35:29',0),(5,109,'2012-11-03','2012-11-03 16:35:37',0),(6,109,'2012-11-03','2012-11-03 16:35:42',0),(7,109,'2012-11-03','2012-11-03 16:35:58',0),(8,109,'2012-11-03','2012-11-03 16:36:04',0),(9,1,'2012-11-03','2012-11-03 16:37:06',0),(10,109,'2012-11-03','2012-11-03 16:37:13',0),(11,109,'2012-11-03','2012-11-03 16:37:18',0),(12,109,'2012-11-03','2012-11-03 16:38:18',0),(13,109,'2012-11-03','2012-11-03 16:45:02',0),(14,1,'2012-11-03','2012-11-03 16:45:07',1),(15,104,'2012-11-03','2012-11-03 16:45:10',1),(16,44,'2012-11-03','2012-11-03 16:46:10',1),(17,46,'2012-11-03','2012-11-03 16:46:10',1),(18,46,'2012-11-03','2012-11-03 16:46:24',1),(19,46,'2012-11-03','2012-11-03 16:46:25',1),(20,46,'2012-11-03','2012-11-03 16:46:48',1);
 /*!40000 ALTER TABLE `PageStatistics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3110,7 +3112,7 @@ CREATE TABLE `UserValidationHashes` (
   `uDateGenerated` int(10) unsigned NOT NULL DEFAULT '0',
   `uDateRedeemed` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`uvhID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3119,6 +3121,7 @@ CREATE TABLE `UserValidationHashes` (
 
 LOCK TABLES `UserValidationHashes` WRITE;
 /*!40000 ALTER TABLE `UserValidationHashes` DISABLE KEYS */;
+INSERT INTO `UserValidationHashes` VALUES (2,1,'HmplNxtTwfH7',1,1351960638,0);
 /*!40000 ALTER TABLE `UserValidationHashes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3157,7 +3160,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin','craig@mtbaker.us','2e81b00fcaf6b4e22f13c047341892a8','1',-1,1,'2012-10-18 16:00:03',0,1350568842,1350568803,555819265,0,1,NULL,NULL);
+INSERT INTO `Users` VALUES (1,'admin','craig@mtbaker.us','2cd3dbd604ff29081a8c8ec3af737857','1',-1,1,'2012-10-18 16:00:03',0,1351961107,1351961102,555819265,1350568803,2,NULL,NULL);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4362,6 +4365,33 @@ LOCK TABLES `btSlideshowImg` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `btSnowReport`
+--
+
+DROP TABLE IF EXISTS `btSnowReport`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `btSnowReport` (
+  `bID` int(10) unsigned NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `host` varchar(255) DEFAULT NULL,
+  `tablename` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`bID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `btSnowReport`
+--
+
+LOCK TABLES `btSnowReport` WRITE;
+/*!40000 ALTER TABLE `btSnowReport` DISABLE KEYS */;
+/*!40000 ALTER TABLE `btSnowReport` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `btSurvey`
 --
 
@@ -4526,4 +4556,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-10-18 14:01:45
+-- Dump completed on 2012-11-03 16:48:26

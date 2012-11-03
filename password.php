@@ -1,0 +1,1 @@
+<?php echo md5('admin'.':'.'qJhRFuDkR6Ih4UFa97FLyeWwlwPUWV8eFu8qQ6zvLHhAa2tvLv6REjN0hVxEN3Zc'); ?>
