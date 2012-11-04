@@ -10,5 +10,6 @@
 		<field name="databasename" type="C" size="255"></field>
 		<field name="username" type="C" size="255"></field>
 		<field name="password" type="C" size="255"></field>
+		<field name="failurecontacts" type="C" size="255"></field>
 	</table>
 </schema>

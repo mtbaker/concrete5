@@ -125,7 +125,7 @@ class SnowReportBlockController extends BlockController {
 
   public function save($data) {
     // See the db.xml document for more info about these.
-    $formVars = array('title', 'host', 'databasename', 'username', 'password');
+    $formVars = array('title', 'host', 'databasename', 'username', 'password', 'failurecontacts');
 
     $args = array();
     foreach ($formVars as $var) {
@@ -139,23 +139,43 @@ class SnowReportBlockController extends BlockController {
 class SnowReportException extends exception {
 
   public function __construct($message = null, $code = 0, Exception $previous = null) {
-    // TODO: write to error log
-    // http://www.concrete5.org/documentation/developers/system/logging
-    
+    $log = new Log(LOG_TYPE_EXCEPTIONS, true, true);
+    $l->write($this->getFormattedMessage());
+    $l->write($e->getTraceAsString());
+    $log->close();
     parent::__construct($message, $code, $previous);
   }
   
-  public function sendThrottledEmail() {
+  private function getFormattedMessage() {
+    return sprintf(
+        "%s: %s:%d %s (%d)\n",
+        t('Snow Report Exception Occurred: '),
+        $this->getFile(),
+        $this->getLine(),
+        $this->getMessage(),
+        $this->getCode()
+    );
+  }
+  
+  public function sendThrottledEmail($addresses) {
       // TODO
       // check for a error.txt file less than an hour old
       // if not found, send mail to contacts (see if there is a c5 setting)
-      
+      if (1) {
+        $this->sendEmail($addresses);
+      }
       // touch the file
   }
 
-  public function sendEmail() {
-    // TODO
-    // http://www.concrete5.org/documentation/developers/helpers/mail
+  public function sendEmail($addresses) {
+    $mh = Loader::helper('mail');
+    $mh->setSubject('Snow Report Error');
+    $mh->setBody($this->getFormattedMessage());
+    foreach (explode(",", $addresses) as $address) {
+      $mh->to($address);
+    }
+    $mh->from('noreply@concrete5.org');
+    $mh->sendMail();
   }
 }
 

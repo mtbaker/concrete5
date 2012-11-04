@@ -43,5 +43,12 @@ $bObj = $controller;
             </div>
         </div>
 
+        <div class="control-group">
+            <label class="control-label" for="inputFailurecontacts">Failure Contacts</label>
+            <div class="controls">
+                <input type="text" id="inputFailurecontacts" placeholder="email list, comma separated" name="failurecontacts" value="<?php echo $bObj->failurecontacts; ?>">
+            </div>
+        </div>
+
     </div>
 </div>
