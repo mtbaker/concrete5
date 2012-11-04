@@ -1,9 +1,10 @@
 <?php
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
-class SnowReportBlockController extends BlockController {
+require __DIR__ . "/../../lib/SnowReportConverter.php";
+require __DIR__ . "/../../lib/SnowReportException.php";
 
-  var $pobj;
+class SnowReportBlockController extends BlockController {
 
   protected $btTable = 'btSnowReport';
   protected $btInterfaceWidth = "600";
@@ -26,10 +27,10 @@ class SnowReportBlockController extends BlockController {
   public function fetchReport() {
 
     // Concrete5 uses an [ADOdb library](http://adodb.sourceforge.net/)
-    $db = Loader::db($this->host, $this->username, $this->password, $this->databasename, true);
+    $report_db = Loader::db($this->host, $this->username, $this->password, $this->databasename, true);
 
     try {
-      $results = &$db->Execute("
+      $results = &$report_db->Execute("
         select
           ReportID
           , Operations
@@ -63,34 +64,38 @@ class SnowReportBlockController extends BlockController {
         limit 1
       ");
     }
-    catch (Exception $e) {
+    catch (ADODB_Exception $e) {
+      // ADOdb threw an exception
       throw new SnowReportException($e->getMessage(), $e->getCode(), $e);
     }
 
     if ($results === false) {
-      throw new SnowReportException($db->ErrorMsg());
+      // No result means the query was bad
+      throw new SnowReportException($report_db->ErrorMsg());
     }
     
     if ($results->fields === false) {
+      // Empty result set
       throw new SnowReportException("No matching report");
     }
 
     // This loads all the results from the query into the object
-    // we're going to return, but next we'll decorate this with some
+    // we're going to return. We'll also decorate this with some
     // other data, like metric and nice timestamps
     $report = (object) $results->fields;
 
+    // Clean up the result sets, C5 says this is optional, I don't trust them.
     $results->Close();
-    $db->Close();
+    $report_db->Close();
 
     // Metric conversions
-    $report->Temperature_metric = SnowReportBlockConverter::toCelcius($report->Temperature);
+    $report->Temperature_metric = SnowReportConverter::toCelcius($report->Temperature);
 
-    $report->Snowfall24_metric  = SnowReportBlockConverter::toCentimeters($report->Snowfall24);
-    $report->SnowfallNew_metric = SnowReportBlockConverter::toCentimeters($report->SnowfallNew);
+    $report->Snowfall24_metric  = SnowReportConverter::toCentimeters($report->Snowfall24);
+    $report->SnowfallNew_metric = SnowReportConverter::toCentimeters($report->SnowfallNew);
 
-    $report->BaseHeather_metric = SnowReportBlockConverter::toCentimeters($report->BaseHeather);
-    $report->BasePan_metric     = SnowReportBlockConverter::toCentimeters($report->BasePan);
+    $report->BaseHeather_metric = SnowReportConverter::toCentimeters($report->BaseHeather);
+    $report->BasePan_metric     = SnowReportConverter::toCentimeters($report->BasePan);
 
     // Friendly time format, included the "ago"
     $date_helper = Loader::helper('date');
@@ -101,12 +106,18 @@ class SnowReportBlockController extends BlockController {
   }
 
   public function view() {
+    $this->set('dbError', false);
 
+    // We're going to use our own error handling here so that
+    // we can show an error template with a snow phone number on it.
     try {
       $report = $this->fetchReport();
     } catch (SnowReportException $e) {
-      $e->sendThrottledEmail();
-      $this->btCacheBlockOutputLifetime = 5;
+      // Send an email to admins, max once per hour
+      $e->sendThrottledEmail($this->failurecontacts);
+      // Change the block lifetime so we try again soon.
+      $this->btCacheBlockOutputLifetime = 15;
+      // the template can change messages based on this.
       $this->set('dbError', true);
       return;
     }
@@ -125,7 +136,9 @@ class SnowReportBlockController extends BlockController {
 
   public function save($data) {
     // See the db.xml document for more info about these.
-    $formVars = array('title', 'host', 'databasename', 'username', 'password', 'failurecontacts');
+    $formVars = array(
+        'title', 'host', 'databasename', 'username', 'password', 'failurecontacts'
+    );
 
     $args = array();
     foreach ($formVars as $var) {
@@ -134,61 +147,6 @@ class SnowReportBlockController extends BlockController {
 
     parent::save($args);
   }
-}
-
-class SnowReportException extends exception {
-
-  public function __construct($message = null, $code = 0, Exception $previous = null) {
-    $log = new Log(LOG_TYPE_EXCEPTIONS, true, true);
-    $l->write($this->getFormattedMessage());
-    $l->write($e->getTraceAsString());
-    $log->close();
-    parent::__construct($message, $code, $previous);
-  }
-  
-  private function getFormattedMessage() {
-    return sprintf(
-        "%s: %s:%d %s (%d)\n",
-        t('Snow Report Exception Occurred: '),
-        $this->getFile(),
-        $this->getLine(),
-        $this->getMessage(),
-        $this->getCode()
-    );
-  }
-  
-  public function sendThrottledEmail($addresses) {
-      // TODO
-      // check for a error.txt file less than an hour old
-      // if not found, send mail to contacts (see if there is a c5 setting)
-      if (1) {
-        $this->sendEmail($addresses);
-      }
-      // touch the file
-  }
-
-  public function sendEmail($addresses) {
-    $mh = Loader::helper('mail');
-    $mh->setSubject('Snow Report Error');
-    $mh->setBody($this->getFormattedMessage());
-    foreach (explode(",", $addresses) as $address) {
-      $mh->to($address);
-    }
-    $mh->from('noreply@concrete5.org');
-    $mh->sendMail();
-  }
-}
-
-class SnowReportBlockConverter {
-
-  static public function toCelcius($temp) {
-    return ($temp - 32) * 0.5556;
-  }
-
-  static public function toCentimeters($length) {
-    return $length * 2.54;
-  }
-
 }
 
 /* End of file controller.php */
