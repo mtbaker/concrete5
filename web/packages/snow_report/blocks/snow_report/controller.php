@@ -32,35 +32,36 @@ class SnowReportBlockController extends BlockController {
     try {
       $results = &$report_db->Execute("
         select
-          ReportID
-          , Operations
-          , Hours
-          , Snowfall24
-          , Snowfall24_note
-          , SnowfallNew
-          , SnowfallNew_note
-          , Temperature
-          , Temperature_note
-          , Winds
-          , Weather
-          , BaseHeather
-          , BasePan
-          , Conditions
-          , Summary
-          , Other
-          , ReportTime
-          , SubmitTime
-          , UserID
-          , Web
-          , Email
-          , Fax
-          , Status
-          , Type
-        from tbl_Reports
+          id
+          , operations
+          , hours
+          , snowfall24
+          , snowfall24_note
+          , snowfallnew
+          , snowfallnew_note
+          , temperature
+          , temperature_note
+          , winds
+          , weather
+          , baseheather
+          , basepan
+          , conditions
+          , summary
+          , other
+          , reporttime
+          , submittime
+          , type
+          , web
+          , email
+          , fax
+          , status
+          , morning
+          , published
+        from incw_snowconditions
         where
-          status = 1 and
-          web = 1
-        order by ReportID DESC
+          published = 1 and
+          type = 'web'
+        order by id DESC
         limit 1
       ");
     }
@@ -73,7 +74,7 @@ class SnowReportBlockController extends BlockController {
       // No result means the query was bad
       throw new SnowReportException($report_db->ErrorMsg());
     }
-    
+
     if ($results->fields === false) {
       // Empty result set
       throw new SnowReportException("No matching report");
@@ -89,18 +90,21 @@ class SnowReportBlockController extends BlockController {
     $report_db->Close();
 
     // Metric conversions
-    $report->Temperature_metric = SnowReportConverter::toCelcius($report->Temperature);
+    $report->temperature_metric = SnowReportConverter::toCelcius($report->temperature);
 
-    $report->Snowfall24_metric  = SnowReportConverter::toCentimeters($report->Snowfall24);
-    $report->SnowfallNew_metric = SnowReportConverter::toCentimeters($report->SnowfallNew);
+    $report->snowfall24_metric  = SnowReportConverter::toCentimeters($report->snowfall24);
+    $report->snowfallnew_metric = SnowReportConverter::toCentimeters($report->snowfallnew);
 
-    $report->BaseHeather_metric = SnowReportConverter::toCentimeters($report->BaseHeather);
-    $report->BasePan_metric     = SnowReportConverter::toCentimeters($report->BasePan);
+    $report->baseheather_metric = SnowReportConverter::toCentimeters($report->baseheather);
+    $report->basepan_metric     = SnowReportConverter::toCentimeters($report->basepan);
 
     // Friendly time format, included the "ago"
     $date_helper = Loader::helper('date');
-    $report->SubmitTimeAgo = $date_helper->timeSince($report->SubmitTime);
-    $report->ReportDay     = $date_helper->date("F j", $report->SubmitTime);
+    $report->submittimeago = $date_helper->timeSince($report->submittime);
+    $report->reportday     = $date_helper->date("F j", $report->submittime);
+
+    // Ski WA data
+    $report->pollingdate = date('Y-m-d H:i:s', $report->submittime);
 
     return $report;
   }

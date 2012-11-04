@@ -38,8 +38,11 @@ if ($c->isEditMode()) {
     <h2><?= $title ?></h2>
 
     <div class="snowReport">
-        <p><?= $Weather ?></p>
-        <p><?= nl2br($Summary) ?></p>
+        <p>Published <?= $submittimeago ?> ago</p>
+        <p><?= $weather ?></p>
+        <p><?= nl2br($summary) ?></p>
     </div>
 
 </div>
+
+<!-- BEGIN POLLING -- lastupdated|<?= $pollingdate ?>|~ newstormtotal|<?= $snowfallnew; ?> in.|~ 24hourtotal|<?= $snowfall24; ?> in.|~ current_temp_base|<?= $temperature ?> F|~ current_temp_summit|<?= $temperature ?> F|~ current_weather_type|<?= $weather; ?>|~ surface_condition_primary|<?= $conditions; ?>|~ surface_depth_base|<?= $baseheather; ?> in.|~ surface_depth_summit|<?= $basepan; ?> in.|~ winds_type|{<?= $winds ?>}|~ operations_hoursofweekday|<?= $hours; ?>|~ specialevents|<?= nl2br($summary); ?>|~   END POLLING -->
