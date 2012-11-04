@@ -38,3 +38,6 @@ log
 # ignore Eclipse-specific files
 /.settings/
 /.buildpath
+
+# Baker development files
+/web/packages/snow_report/blocks/snow_report/error.txt
