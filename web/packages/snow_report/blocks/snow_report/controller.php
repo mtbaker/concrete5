@@ -28,48 +28,60 @@ class SnowReportBlockController extends BlockController {
     // Concrete5 uses an [ADOdb library](http://adodb.sourceforge.net/)
     $db = Loader::db($this->host, $this->username, $this->password, $this->databasename, true);
 
-    $results = &$db->Execute("
-      select
-        ReportID
-        , Operations
-        , Hours
-        , Snowfall24
-        , Snowfall24_note
-        , SnowfallNew
-        , SnowfallNew_note
-        , Temperature
-        , Temperature_note
-        , Winds
-        , Weather
-        , BaseHeather
-        , BasePan
-        , Conditions
-        , Summary
-        , Other
-        , ReportTime
-        , SubmitTime
-        , UserID
-        , Web
-        , Email
-        , Fax
-        , Status
-        , Type
-      from tbl_Reports
-      where
-        status = 1 and
-        web = 1 and web =0
-      order by ReportID DESC
-      limit 1
-    ");
+    try {
+      $results = &$db->Execute("
+        select
+          ReportID
+          , Operations
+          , Hours
+          , Snowfall24
+          , Snowfall24_note
+          , SnowfallNew
+          , SnowfallNew_note
+          , Temperature
+          , Temperature_note
+          , Winds
+          , Weather
+          , BaseHeather
+          , BasePan
+          , Conditions
+          , Summary
+          , Other
+          , ReportTime
+          , SubmitTime
+          , UserID
+          , Web
+          , Email
+          , Fax
+          , Status
+          , Type
+        from tbl_Reports
+        where
+          status = 1 and
+          web = 1
+        order by ReportID DESC
+        limit 1
+      ");
+    }
+    catch (Exception $e) {
+      throw new SnowReportException($e->getMessage(), $e->getCode(), $e);
+    }
 
     if ($results === false) {
-      throw new SnowReportException();
+      throw new SnowReportException($db->ErrorMsg());
+    }
+    
+    if ($results->fields === false) {
+      throw new SnowReportException("No matching report");
     }
 
     // This loads all the results from the query into the object
     // we're going to return, but next we'll decorate this with some
     // other data, like metric and nice timestamps
     $report = (object) $results->fields;
+
+    $results->Close();
+    $db->Close();
 
     // Metric conversions
     $report->Temperature_metric = SnowReportBlockConverter::toCelcius($report->Temperature);
@@ -81,22 +93,21 @@ class SnowReportBlockController extends BlockController {
     $report->BasePan_metric     = SnowReportBlockConverter::toCentimeters($report->BasePan);
 
     // Friendly time format, included the "ago"
-    $date_helper = new Concrete5_Helper_Date();
+    $date_helper = Loader::helper('date');
     $report->SubmitTimeAgo = $date_helper->timeSince($report->SubmitTime);
     $report->ReportDay     = $date_helper->date("F j", $report->SubmitTime);
-
-    $results->Close();
-    $db->Close();
 
     return $report;
   }
 
   public function view() {
+
     try {
       $report = $this->fetchReport();
     } catch (SnowReportException $e) {
       $e->sendThrottledEmail();
-      // TODO: change to error template
+      $this->btCacheBlockOutputLifetime = 5;
+      $this->set('dbError', true);
       return;
     }
 
