@@ -6,7 +6,7 @@ require __DIR__ . "/../../lib/SnowReportException.php";
 
 class SnowReportBlockController extends BlockController {
 
-  protected $btTable = 'btSnowReport';
+  protected $btTable = "btSnowReport";
   protected $btInterfaceWidth = "600";
   protected $btInterfaceHeight = "400";
   protected $btCacheBlockOutput = false;
@@ -14,7 +14,7 @@ class SnowReportBlockController extends BlockController {
   protected $btCacheBlockOutputForRegisteredUsers = false;
   protected $btCacheBlockOutputLifetime = 300;
 
-  public $title = '';
+  public $title = "";
 
   public function getBlockTypeDescription() {
     return t("Embeds a snow report in your web page.");
