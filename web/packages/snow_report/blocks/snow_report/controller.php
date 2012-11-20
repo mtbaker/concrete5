@@ -9,10 +9,10 @@ class SnowReportBlockController extends BlockController {
   protected $btTable = "btSnowReport";
   protected $btInterfaceWidth = "600";
   protected $btInterfaceHeight = "400";
-  protected $btCacheBlockOutput = false;
+  protected $btCacheBlockOutput = true;
   protected $btCacheBlockOutputOnPost = true;
   protected $btCacheBlockOutputForRegisteredUsers = false;
-  protected $btCacheBlockOutputLifetime = 300;
+  protected $btCacheBlockOutputLifetime = 60;
 
   public $title = "";
 
@@ -101,7 +101,9 @@ class SnowReportBlockController extends BlockController {
     // Friendly time format, included the "ago"
     $date_helper = Loader::helper('date');
     $report->submittimeago = $date_helper->timeSince($report->submittime);
-    $report->reportday     = $date_helper->date("F j", $report->submittime);
+    $report->reportdate    = $date_helper->date("F j, Y", $report->submittime);
+    $report->reportday     = $date_helper->date("l", $report->submittime);
+    $report->reporttime    = $date_helper->date("g:i a", $report->submittime);
 
     // Ski WA data
     $report->pollingdate = date('Y-m-d H:i:s', $report->submittime);
