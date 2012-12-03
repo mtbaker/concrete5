@@ -87,10 +87,10 @@ if ($reportUnits == SnowReportBlockController::unitsMetric) {
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <div class="ccm-ui" style="float: right;">
-                                        <div class="btn-group reportUnitsToggle" data-toggle="buttons-radio">
-                                            <button type="button" class="btn btn-mini <?= $btnImperial; ?>" data-units="<?= SnowReportBlockController::unitsImperial ?>">Imperial</button>
-                                            <button type="button" class="btn btn-mini <?= $btnMetric; ?>" data-units="<?= SnowReportBlockController::unitsMetric ?>">Metric</button>
+                                    <div style="float: right;">
+                                        <div class="bbtn-group reportUnitsToggle">
+                                            <button type="button" class="bbtn bbtn-mini <?= $btnImperial; ?>" data-units="<?= SnowReportBlockController::unitsImperial ?>">Imperial</button>
+                                            <button type="button" class="bbtn bbtn-mini <?= $btnMetric; ?>" data-units="<?= SnowReportBlockController::unitsMetric ?>">Metric</button>
                                         </div>
                                     </div>
                                 </td>
