@@ -58,6 +58,19 @@ if ($c->isEditMode()) {
 //    morning
 //    published
 
+$styleImperial = "";
+$btnImperial = "active";
+$styleMetric = "display: none;";
+$btnMetric = "";
+
+if ($reportUnits == SnowReportBlockController::unitsMetric) {
+  $styleImperial = "display: none;";
+  $btnImperial = "";
+  $styleMetric = "";
+  $btnMetric = "active";
+}
+
+
 ?>
 
 <div class="snowReportContainer">
@@ -67,9 +80,20 @@ if ($c->isEditMode()) {
                         <tbody>
                             <tr>
                                 <td><img src="http://mtbaker.us/files/2213/5302/0607/Baker_logo.gif" alt="" width="181" height="31"></td>
-
-                                <td style="text-align: right;"><span style="font-size: medium;"><strong><?= $reportday ?> • <?= $reporttime ?></strong></span><br>
-                                <span style="font-size: medium;"><strong><?= $reportdate ?></strong></span></td>
+                                <td style="text-align: right;">
+                                    <span style="font-size: medium;"><strong><?= $reportday ?> • <?= $reporttime ?></strong></span><br>
+                                    <span style="font-size: medium;"><strong><?= $reportdate ?></strong></span><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="ccm-ui" style="float: right;">
+                                        <div class="btn-group reportUnitsToggle" data-toggle="buttons-radio">
+                                            <button type="button" class="btn btn-mini <?= $btnImperial; ?>" data-units="<?= SnowReportBlockController::unitsImperial ?>">Imperial</button>
+                                            <button type="button" class="btn btn-mini <?= $btnMetric; ?>" data-units="<?= SnowReportBlockController::unitsMetric ?>">Metric</button>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,8 +111,8 @@ if ($c->isEditMode()) {
                             </tr>
 
                             <tr>
-                                <td style="background-color: #e0ffff; text-align: center;"><span style="font-size: x-large;"><strong><?= $snowfallnew ?></strong></span> <?= $snowfallnew_note ?></td>
-                                <td style="background-color: #add8e6; text-align: center;"><span style="font-size: large;"><strong><?= $snowfall24 ?></strong></span> <?= $snowfall24_note ?></td>
+                                <td style="background-color: #e0ffff; text-align: center;"><span style="font-size: x-large;"><strong class="reportUnits reportImperial" style="<?= $styleImperial ?>"><?= $snowfallnew ?>"</strong><strong class="reportUnits reportMetric" style="<?= $styleMetric ?>"><?= $snowfallnew_metric ?> cm</strong></span> <?= $snowfallnew_note ?></td>
+                                <td style="background-color: #add8e6; text-align: center;"><span style="font-size: x-large;"><strong class="reportUnits reportImperial" style="<?= $styleImperial ?>"><?= $snowfall24 ?>"</strong><strong class="reportUnits reportMetic" style="<?= $styleMetric ?>"><?= $snowfall24_metric ?> cm</strong></span> <?= $snowfall24_note ?></td>
                                 <!--<td style="background-color: #87ceeb; text-align: center;"><span style="font-size: large;"><strong>24"</strong></span></td>-->
                             </tr>
                         </tbody>
@@ -102,17 +126,21 @@ if ($c->isEditMode()) {
 
                             <tr>
                                 <td style="background-color: #add8e6;"><span style="font-size: small;"><em><strong>Temperature</strong></em></span></td>
-                                <td style="background-color: #e0ffff;"><span style="font-size: medium;"><strong><?= $temperature ?>° <?= $temperature_note ?></strong></span></td>
+                                <td style="background-color: #e0ffff;"><span style="font-size: medium;">
+                                    <strong class="reportUnits reportImperial" style="<?= $styleImperial ?>"><?= $temperature ?>°</strong>
+                                    <strong class="reportUnits reportMetric" style="<?= $styleMetric ?>"><?= $temperature_metric ?>°C</strong>
+                                    <?= $temperature_note ?></span>
+                                </td>
                             </tr>
 
                             <tr>
                                 <td style="background-color: #add8e6;"><span style="font-size: small;"><em><strong>Base Heather Meadows</strong></em></span></td>
-                                <td style="background-color: #e0ffff;"><span style="font-size: medium;"><strong><?= $baseheather ?>"</strong></span></td>
+                                <td style="background-color: #e0ffff;"><span style="font-size: medium;"><strong class="reportUnits reportImperial" style="<?= $styleImperial ?>"><?= $baseheather ?>"</strong><strong class="reportUnits reportMetric" style="<?= $styleMetric ?>"><?= $baseheather_metric ?> cm</strong></span></td>
                             </tr>
 
                             <tr>
                                 <td style="background-color: #add8e6;"><span style="font-size: small;"><em><strong>Base Pan Dome</strong></em></span></td>
-                                <td style="background-color: #e0ffff;"><span style="font-size: medium;"><strong><?= $basepan ?>"</strong></span></td>
+                                <td style="background-color: #e0ffff;"><span style="font-size: medium;"><strong class="reportUnits reportImperial" style="<?= $styleImperial ?>"><?= $basepan ?>"</strong><strong class="reportUnits reportMetric" style="<?= $styleMetric ?>"><?= $basepan_metric ?> cm</strong></span></td>
                             </tr>
 
                             <tr>

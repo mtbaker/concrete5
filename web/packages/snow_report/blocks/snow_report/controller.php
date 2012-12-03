@@ -15,6 +15,11 @@ class SnowReportBlockController extends BlockController {
   protected $btCacheBlockOutputLifetime = 60;
 
   public $title = "";
+  
+  // This needs to match the one in templates/full/view.js
+  const unitCookieName = "reportUnits";
+  const unitsMetric = 1;
+  const unitsImperial = 0;
 
   public function getBlockTypeDescription() {
     return t("Embeds a snow report in your web page.");
@@ -111,6 +116,12 @@ class SnowReportBlockController extends BlockController {
     return $report;
   }
 
+  public function on_page_view() {
+     $html = Loader::helper('html');
+     $this->addHeaderItem($html->javascript('jquery.js'));
+     $this->addHeaderItem($html->javascript('jquery.cookie.js'));
+  }
+
   public function view() {
     $this->set('dbError', false);
 
@@ -132,10 +143,23 @@ class SnowReportBlockController extends BlockController {
     $this->set('bID', $this->bID);
     $this->set('title', $this->title);
 
+    // From the users cookies, a unit preference
+    if (!empty($_COOKIE[self::unitCookieName])) {
+      $this->set('reportUnits', $_COOKIE[self::unitCookieName]);
+    }
+    else {
+      $this->set('reportUnits', self::unitsImperial);
+    }
+
     // Expose each of the results from the database to the template
     foreach ($report as $key => $value) {
       $this->set($key, $value);
     }
+
+    // Return C5 to using the default datbase.
+    // C5 is a horribly broken bit of junk with leaky singletons, miserable
+    // formatting, and bad practices. Amatuer hour.
+    $db = Loader::db(null, null, null, null, true);
 
     return;
   }
