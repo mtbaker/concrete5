@@ -3,6 +3,14 @@
   so that we won't intefere with boostrap in the admin.
 */
 
+.snowReportContainer table {
+  width: 100%;
+}
+.snowReportContainer table td {
+  padding: 2px 4px;
+}
+
+
 .bbtn-group {
   position: relative;
   display: inline-block;

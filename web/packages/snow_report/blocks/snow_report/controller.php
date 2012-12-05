@@ -9,7 +9,7 @@ class SnowReportBlockController extends BlockController {
   protected $btTable = "btSnowReport";
   protected $btInterfaceWidth = "600";
   protected $btInterfaceHeight = "400";
-  protected $btCacheBlockOutput = true;
+  protected $btCacheBlockOutput = false; // disabled until we sort out the metric/imperial generation cache
   protected $btCacheBlockOutputOnPost = true;
   protected $btCacheBlockOutputForRegisteredUsers = false;
   protected $btCacheBlockOutputLifetime = 60;

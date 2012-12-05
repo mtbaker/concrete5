@@ -76,7 +76,7 @@ if ($reportUnits == SnowReportBlockController::unitsMetric) {
 <div class="snowReportContainer">
 
 
-                    <table style="width: 540px;" border="0">
+                    <table border="0">
                         <tbody>
                             <tr>
                                 <td><img src="http://mtbaker.us/files/2213/5302/0607/Baker_logo.gif" alt="" width="181" height="31"></td>
@@ -98,7 +98,7 @@ if ($reportUnits == SnowReportBlockController::unitsMetric) {
                         </tbody>
                     </table>
 
-                    <table style="width: 540px;" border="0">
+                    <table border="0">
                         <tbody>
                             <tr style="background-color: #1e90ff;">
                                 <td style="background-color: #1e90ff;" colspan="3"><span style="font-size: large; color: #ffffff;"><strong>NEW SNOW</strong></span></td>
@@ -118,7 +118,7 @@ if ($reportUnits == SnowReportBlockController::unitsMetric) {
                         </tbody>
                     </table>
 
-                    <table style="width: 540px;" border="0">
+                    <table border="0">
                         <tbody>
                             <tr style="background-color: #1e90ff;">
                                 <td style="background-color: #1e90ff;" colspan="2"><span style="font-size: large; color: #ffffff;"><strong>CONDITIONS</strong></span></td>
@@ -155,7 +155,7 @@ if ($reportUnits == SnowReportBlockController::unitsMetric) {
                         </tbody>
                     </table>
 
-                    <table style="width: 540px;" border="0">
+                    <table border="0">
                         <tbody>
                             <tr style="background-color: #000000;">
                                 <td style="background-color: #1e90ff;" colspan="2"><span style="font-size: large; color: #ffffff;"><strong>OPERATIONS</strong></span></td>
@@ -178,7 +178,7 @@ if ($reportUnits == SnowReportBlockController::unitsMetric) {
                         </tbody>
                     </table>
 <? if ("" !== $other) { ?>
-                    <table style="width: 540px;" border="0">
+                    <table border="0">
                         <tbody>
                             <tr style="background-color: #1e90ff;">
                                 <td><span style="font-size: large; color: #ffffff;"><strong>NEWS FROM THE MOUNTAIN<br></strong></span></td>
